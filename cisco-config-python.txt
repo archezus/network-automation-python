@@ -1,0 +1,37 @@
+!THIS A SAMPLE CONFIGURATION WITH DHCP FOR EACH SUBNET
+enable
+cisco
+conf t
+hostname PYTHON-RTR-1
+int g0/1
+ip address 192.168.1.1 255.255.255.0
+no shut
+int g0/2
+ip address 192.168.2.1 255.255.255.0
+no shut
+int g0/2
+ip address 192.168.3.1 255.255.255.0
+no shut
+end
+conf t
+dhcp excluded-address 192.168.1.1 192.168.1.50
+dhcp excluded-address 192.168.2.1 192.168.2.50
+dhcp excluded-address 192.168.3.1 192.168.3.50
+ip dhcp pool SUBNET-1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+ip dhcp pool SUBNET-2
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 8.8.8.8
+ip dhcp pool SUBNET-3
+network 192.168.3.0 255.255.255.0
+default-router 192.168.3.1
+dns-server 8.8.8.8
+end
+conf t
+!CHANGE THE NEXT HOP ACCORDING TO YOUR TOPOLOGY
+ip route 0.0.0.0 0.0.0.0 192.168.122.147
+end
+exit

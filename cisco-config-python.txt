@@ -14,9 +14,10 @@ ip address 192.168.3.1 255.255.255.0
 no shut
 end
 conf t
-dhcp excluded-address 192.168.1.1 192.168.1.50
-dhcp excluded-address 192.168.2.1 192.168.2.50
-dhcp excluded-address 192.168.3.1 192.168.3.50
+service dhcp
+dhcp excluded-address 192.168.1.1 192.168.1.10
+dhcp excluded-address 192.168.2.1 192.168.2.10
+dhcp excluded-address 192.168.3.1 192.168.3.10
 ip dhcp pool SUBNET-1
 network 192.168.1.0 255.255.255.0
 default-router 192.168.1.1
